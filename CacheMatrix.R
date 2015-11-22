@@ -22,7 +22,8 @@ makeCacheMatrix <- function(x = matrix()) {
        getInverse=getInverse) 
 }
 
-##returns the inverse of a CacheMatrix object
+## This function computes the inverse of the "CacheMatrix" object created by 
+## makeCacheMatrix above. 
 
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
@@ -37,5 +38,49 @@ cacheSolve <- function(x, ...) {
   inv
 }
 
+##> Sample run:
+##> sample 1:
+##> x=matrix(1:4,2,2)
+##> my=makeCacheMatrix(x)
+##> my$get()
+##    [,1] [,2]
+##[1,]    1    3
+##[2,]    2    4
+##> my$getInverse()
+##NULL
+##> cacheSolve(my)
+##     [,1] [,2]
+##[1,]   -2  1.5
+##[2,]    1 -0.5
+##> cacheSolve(my)
+##getting cached data
+##     [,1] [,2]
+##[1,]   -2  1.5
+##[2,]    1 -0.5
+##> my$getInverse()
+##     [,1] [,2]
+##[1,]   -2  1.5
+##[2,]    1 -0.5
 
-
+##> sample 2:
+##> x2=matrix(c(6,6,7,8),2,2)
+##> my2=makeCacheMatrix(x2)
+##> my2$get()
+##     [,1] [,2]
+##[1,]    6    7
+##[2,]    6    8
+##> my2$getInverse()
+##NULL
+##> cacheSolve(my2)
+##          [,1]      [,2]
+##[1,]  1.333333 -1.166667
+##[2,] -1.000000  1.000000
+##> cacheSolve(my2)
+##getting cached data
+##          [,1]      [,2]
+##[1,]  1.333333 -1.166667
+##[2,] -1.000000  1.000000
+##> my2$getInverse()
+##          [,1]      [,2]
+##[1,]  1.333333 -1.166667
+##[2,] -1.000000  1.000000
